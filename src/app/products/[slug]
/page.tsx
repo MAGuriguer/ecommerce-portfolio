@@ -1,6 +1,8 @@
 import { getProductBySlug, products } from '@/data/products';
 import { formatPrice } from '@/lib/currency';
 import { notFound } from 'next/navigation';
+import AddToCartButton from '@/components/AddToCartButton';
+
 
 type Props = { params: { slug: string } };
 
@@ -30,13 +32,8 @@ export default function ProductDetailPage({ params }: Props) {
         </div>
         <p className="text-gray-700">{product.description}</p>
 
-        <button
-          className="px-4 py-2 rounded-xl bg-black text-white hover:opacity-90"
-          // in M3 collegheremo allo store del carrello
-          onClick={() => alert('Mock: aggiunto al carrello (M3)')}
-        >
-          Aggiungi al carrello
-        </button>
+       <AddToCartButton product={product} />
+
       </div>
     </section>
   );
